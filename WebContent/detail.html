@@ -42,8 +42,8 @@ $(function(){
 		$replyFormObj.find("input[name=parent_no]").val(parent_no);
 		
 		$.ajax({
-			url: backContextPath + $replyFormObj.attr("action"),
-			method: $replyFormObj.attr("method"),
+			url: backContextPath + $replyFormObj.attr("action"), // '/boardbackspring/reply'
+			method: $replyFormObj.attr("method"), // get, post
 			data: $replyFormObj.serialize(),
 			success:function(responseObj){
 				if(responseObj.status == 1){

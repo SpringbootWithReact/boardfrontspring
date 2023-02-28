@@ -2,14 +2,27 @@
  --><script>
 function showList(responseObj){
 	console.log(responseObj);
+	console.log(responseObj.list[0].board_title)  // 감악산
+	
+	
 	//테이블객체
 	var $tableObj =$("section>div.list>table");
 	
+	// 복제 본 삭제
 	$("section>div.list>table tr.copy").remove();
 	
 	//원본행객체
+	/* <tr class="origin">
+		   <td class="board_no"></td>
+		   <td class="board_title"></td>
+		   <td class="board_writer"></td>
+		   <td class="board_dt"></td>
+		   <td class="board_cnt"></td>
+		</tr> */
 	var $trOriginObj = $("section>div.list>table tr.origin");
-	$trOriginObj.show(); //원본행객체 보여주기
+	
+	$trOriginObj.show(); //원본행객체 보여주기, 이건 왜 존재하는거지??
+	
 	if(responseObj.status == -1){
 		alert(responseObj.msg);
 		return false;
@@ -52,7 +65,10 @@ $(function(){
 		url: backContextPath + "/list",
 		method: 'get',
 		success: function(responseObj){
-			alert(responseObj);
+			// map.put("list", list);
+			// return map;
+			// 반환타입 Map<String, Object>
+			//alert(responseObj);
 			showList(responseObj);
 		}
 	});//$ajax */
@@ -126,6 +142,7 @@ section>div.list>table tr>td.board_cnt{ width: 10%; text-align: right; }
 	  <input type="hidden" name="board_no">
 	  <input type="search" name="word"><input type="button" value="검색">
 	</form>
+	<p></p>
 	<table>
 		<tbody>
 		<tr class="origin">
